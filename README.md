@@ -9,22 +9,24 @@ composer install
 
 Внутри параметры, которые необходимо прописать
 
-//хост подключения для тайги
-$taigaUrl = 'http://xxx.com/'; 
+хост подключения для тайги
+<pre>$taigaUrl = 'http://xxx.com/'; </pre>
 
-// логин для тайги
-$login = 'xxx@gmail.com'; 
+логин для тайги
+<pre>$login = 'xxx@gmail.com'; </pre>
 
-// пароль для тайги
-$pass = 'xxxx'; 
+пароль для тайги
+<pre>$pass = 'xxxx'; </pre>
 
-//От какого автора создается (id)
-$taigaAuthorId = 16;  
-//id пользователя находится легко - по выпадающим спискам
+От какого автора создается (id)
+<pre>$taigaAuthorId = 16;  </pre>
+id пользователя находится легко - по выпадающим спискам
 
-// В каком проект создается (id) 
-$taigaProjectId = 7; 
-//id проекта можно взять через slug $api->getProjectId($slug)
+В каком проект создается (id) 
+<pre>$taigaProjectId = 7; </pre>
+id проекта можно взять через slug <pre>$api->getProjectId($slug)</pre>
 
-$name = 'Title'; //Название задачи
-$msg = 'Message'; // Текст задачи
+Название задачи
+<pre>$name = 'Title'; </pre>
+Текст задачи
+<pre>$msg = 'Message'; </pre>
