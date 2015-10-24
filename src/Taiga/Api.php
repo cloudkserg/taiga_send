@@ -2,6 +2,7 @@
 namespace Taiga;
 use GuzzleHttp\Client;
 use  GuzzleHttp\Psr7\Response;
+use GuzzleHttp\Exception\RequestException;
 class Api
 {
     const LOGIN_URL = '/api/v1/auth';
@@ -55,8 +56,13 @@ class Api
                 'headers' => $headers,
                 'json' => $data 
             ]);
-        } catch (\Exception $e) {
-            throw new \Exception($failMessage . ':' . $response->getBody());
+        } catch (RequestException $e) {
+            $url = (string)$e->getRequest()->getUri();
+            $textError = "Request has failed by current url = " . $url;
+            if ($e->hasResponse()) {
+                $textError .= " with current response = \n" . $e->getResponse() . "\n";
+            }
+            throw new \Exception($textError);
         }
 
         return $response;
@@ -101,6 +107,11 @@ class Api
         ], 'Не удалось авторизоваться');
 
         $data = $this->json($response);
+        if (!isset($data)) {
+            throw new \Exception('Not normal response - response data empty: ' . 
+               "\n" . $response->getBody() . "\n"
+            );
+        }
         $this->_token = $data->auth_token;
         $this->_authString = 'Bearer ' . $this->_token;
     }

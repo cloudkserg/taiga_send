@@ -1,0 +1,16 @@
+<?php
+return array(
+    'connection' => array(
+        'url' => 'http://xxx.com/',
+        'login' =>  'xxx@gmail.com',
+        'pass' => 'xxxx',
+    ),
+
+    'issue' => array(
+        'authorId' => 16,
+        'projectId' => 7,
+    
+    )
+
+
+);
